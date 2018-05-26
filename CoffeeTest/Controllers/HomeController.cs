@@ -6,8 +6,15 @@ using System.Web.Mvc;
 
 namespace CoffeeTest.Controllers
 {
+    /// <summary>
+    /// Home Controller
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Index Page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";

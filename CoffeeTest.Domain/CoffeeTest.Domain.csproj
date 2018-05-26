@@ -49,14 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuditDrinksOrdered.cs" />
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="CoffeeIngredient.cs" />
+    <Compile Include="DrinkIngredient.cs" />
     <Compile Include="DomainHelper\Enumerations.cs" />
     <Compile Include="Drink.cs" />
+    <Compile Include="Ingredient.cs" />
     <Compile Include="Office.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Pantry.cs" />
-    <Compile Include="PantryDrinks.cs" />
+    <Compile Include="PantryDrink.cs" />
+    <Compile Include="PantryIngredient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

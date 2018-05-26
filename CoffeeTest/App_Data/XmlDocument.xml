@@ -481,6 +481,17 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:CoffeeTest.Controllers.HomeController">
+            <summary>
+            Home Controller
+            </summary>
+        </member>
+        <member name="M:CoffeeTest.Controllers.HomeController.Index">
+            <summary>
+            Index Page
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:CoffeeTest.Controllers.ValuesController.Get(System.Int32)">
             <summary>
             Test Description
