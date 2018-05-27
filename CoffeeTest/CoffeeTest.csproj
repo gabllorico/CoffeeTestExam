@@ -261,6 +261,7 @@
     <Compile Include="Controllers\OfficeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PantryController.cs" />
+    <Compile Include="Controllers\PantryIngredientController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -336,10 +337,12 @@
     <Content Include="Views\Office\AddOffice.cshtml" />
     <Content Include="Views\Office\OfficeEditor.cshtml" />
     <Content Include="Views\Office\_OfficePantriesPartial.cshtml" />
+    <Content Include="Views\Pantry\PantryEditor.cshtml" />
+    <Content Include="Views\Pantry\_PantryDrinksPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Pantry\" />
+    <Folder Include="Views\PantryIngredient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -77,7 +77,7 @@ namespace CoffeeTest.Data.Queries
                         PantryId = pantry.Id,
                         PantryName = pantry.PantryName
                     },
-                    Drinks = pantry.Drinks.Select(c => new DrinkDto
+                    Drinks = pantry.Drinks.Select(c => new DrinkWithIngredientsDto
                     {
                         DrinkName = c.DrinkName,
                         DrinkId = c.Id

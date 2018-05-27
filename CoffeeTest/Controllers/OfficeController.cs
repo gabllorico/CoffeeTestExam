@@ -39,7 +39,7 @@ namespace CoffeeTest.Controllers
             try
             {
                 var addedoffice = new OfficeCommands().AddOffice(office);
-                return RedirectToAction("OfficeEditor", new { edit = true, officeId = addedoffice.OfficeId });
+                return RedirectToAction("OfficeEditor", new { id = addedoffice.OfficeId });
             }
             catch (Exception ex)
             {

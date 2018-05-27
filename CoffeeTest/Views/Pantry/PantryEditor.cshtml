@@ -1,0 +1,33 @@
+﻿@model CoffeeTest.Data.DTO.PantryWithOfficeIdDto
+@{
+    ViewBag.Title = Model.PantryId == 0 ? "Add Pantry" : "Edit " + Model.PantryName;
+}
+
+
+@using (Html.BeginForm(Model.PantryId == 0 ? "AddPantry" : "EditPantry", "Pantry", FormMethod.Post))
+{
+    <section class="row">
+        <h2 class="col-md-6">@ViewBag.Title</h2>
+        <section class="pull-right">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a class="btn btn-default" href="@Url.Action("OfficeEditor", "Office", new {id = Model.OfficeId})">Cancel</a>
+        </section>
+    </section>
+    <hr />
+    @Html.HiddenFor(dto => dto.PantryId)
+    @Html.HiddenFor(dto => dto.OfficeId)
+    <section class="row">
+        @Html.LabelFor(dto => dto.PantryName, "Pantry Name", new { @class = "col-md-2" })
+        @Html.TextBoxFor(dto => dto.PantryName, new { @class = "form-control col-md-4" })
+    </section>
+
+    <section>
+    </section>
+
+    if (Model.PantryId != 0)
+    {
+        @Html.Action("GetPantryDrinks", "Pantry", new { id = Model.PantryId })
+    }
+
+
+}

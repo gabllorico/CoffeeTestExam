@@ -10,7 +10,7 @@
                 <h4>
                     @Model.PantriesAndDrinks[i].Pantry.PantryName
                 </h4>
-                <a href="#" class="pull-right btn btn-default">Go To @Model.PantriesAndDrinks[i].Pantry.PantryName</a>
+                <a href="@Url.Action("PantryEditor", "Pantry", new {id = Model.PantriesAndDrinks[i].Pantry.PantryId, officeId = Model.Office.OfficeId})" class="pull-right btn btn-default">Go To @Model.PantriesAndDrinks[i].Pantry.PantryName</a>
             </span>
             <span class="panel-body">
 

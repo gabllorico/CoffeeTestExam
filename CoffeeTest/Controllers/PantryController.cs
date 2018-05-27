@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CoffeeTest.Data.Commands;
+using CoffeeTest.Data.DTO;
 using CoffeeTest.Data.Queries;
 
 namespace CoffeeTest.Controllers
@@ -15,9 +17,39 @@ namespace CoffeeTest.Controllers
             return View();
         }
 
-        public ActionResult PantryEditor(int? id)
+        public ActionResult PantryEditor(int? id, int officeId)
         {
-            return View();
+            var model = new PantryWithOfficeIdDto
+            {
+                OfficeId = officeId
+            };
+
+            if (id.HasValue)
+                model = new PantryQueries().GetSelectedPantry(id.Value);
+
+            return View(model);
+        }
+
+        public ActionResult GetPantryDrinks(int id)
+        {
+            var model = new PantryQueries().GetDrinksOfSelectedPantry(id);
+
+            return PartialView("_PantryDrinksPartial", model);
+        }
+
+        public ActionResult AddPantry(PantryWithOfficeIdDto pantry)
+        {
+            try
+            {
+                var addedPantry = new PantryCommand().AddPantry(pantry);
+                return RedirectToAction("PantryEditor", "Pantry", new { id = addedPantry.PantryId, officeId = addedPantry.OfficeId });
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.GetBaseException();
+                return RedirectToAction("PantryEditor", "Pantry", new { officeId = pantry.OfficeId });
+            }
+
         }
     }
 }

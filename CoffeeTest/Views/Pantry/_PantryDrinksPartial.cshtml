@@ -1,0 +1,28 @@
+﻿@model CoffeeTest.Data.DTO.PantryDrinksDto
+<hr />
+<div class="row">
+    @for (var i = 0; i < Model.Drinks.Count; i++)
+    {
+        <section class="panel panel-default col-md-4">
+            <span class="panel-heading">
+                <h4>
+                    @Model.Drinks[i].DrinkName
+                </h4>
+            </span>
+            <span class="panel-body">
+
+                @for (var y = 0; y < Model.Drinks[i].IngredientWithUnitsUsed.Count; y++)
+                {
+                    <div class="row">
+                        <label class="col-md-5">
+                            @Model.Drinks[i].IngredientWithUnitsUsed[y].IngredientUsed
+                        </label>
+                        <label class="col-md-5">
+                            @Model.Drinks[i].IngredientWithUnitsUsed[y].UnitsUsed units
+                        </label>
+                    </div>
+                }
+            </span>
+        </section>
+    }
+</div>

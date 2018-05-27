@@ -24,6 +24,10 @@
         @Html.TextBoxFor(dto => dto.Location, new {@class = "form-control col-md-4"})
     </section>
 
+    <hr/>
+
+    <a href="@Url.Action("PantryEditor", "Pantry", new { officeId = Model.OfficeId})" class="btn btn-info">Add Pantry</a>
+
     if (Model.OfficeId != 0)
     {
         @Html.Action("GetOfficePantries", "Office", new {officeId = Model.OfficeId})

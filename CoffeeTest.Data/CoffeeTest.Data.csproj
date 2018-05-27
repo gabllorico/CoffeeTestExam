@@ -70,22 +70,27 @@
   <ItemGroup>
     <Compile Include="Commands\IngredientCommands.cs" />
     <Compile Include="Commands\OfficeCommands.cs" />
+    <Compile Include="Commands\PantryCommand.cs" />
     <Compile Include="DBContext\BaseDbContext.cs" />
     <Compile Include="DBContext\CoffeeTestDbContext.cs" />
     <Compile Include="DBContext\CoffeeTestInitializer.cs" />
     <Compile Include="DTO\AllDrinksDto.cs" />
     <Compile Include="DTO\AllOfficesDto.cs" />
     <Compile Include="DTO\DrinkDto.cs" />
+    <Compile Include="DTO\DrinkWithIngredientsDto.cs" />
     <Compile Include="DTO\AllIngredientsDto.cs" />
     <Compile Include="DTO\IngredientDto.cs" />
+    <Compile Include="DTO\IngredientWithUnitsUsedDto.cs" />
     <Compile Include="DTO\OfficeDto.cs" />
     <Compile Include="DTO\OfficePantriesDto.cs" />
     <Compile Include="DTO\PantryDrinksDto.cs" />
     <Compile Include="DTO\PantryDto.cs" />
+    <Compile Include="DTO\PantryWithOfficeIdDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\DrinkQueries.cs" />
     <Compile Include="Queries\IngredientQueries.cs" />
     <Compile Include="Queries\OfficeQueries.cs" />
+    <Compile Include="Queries\PantryIngredientQueries.cs" />
     <Compile Include="Queries\PantryQueries.cs" />
   </ItemGroup>
   <ItemGroup>
