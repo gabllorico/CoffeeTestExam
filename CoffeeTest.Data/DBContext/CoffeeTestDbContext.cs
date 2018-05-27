@@ -38,5 +38,7 @@ namespace CoffeeTest.Data.DBContext
         IDbSet<Pantry> Pantries { get; set; }
         IDbSet<PantryDrink> PantryDrinks { get; set; }
         IDbSet<PantryIngredient> PantryIngredients { get; set; }
+
+        int SaveChanges();
     }
 }

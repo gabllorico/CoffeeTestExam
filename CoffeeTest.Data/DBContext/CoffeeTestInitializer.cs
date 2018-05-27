@@ -78,48 +78,25 @@ namespace CoffeeTest.Data.DBContext
 
             var doubleAmericano = new Drink
             {
-                DrinkName = "Double Americano"
+                DrinkName = "Double Americano",
+                Pantry = pantry
             };
 
             var sweetLatte = new Drink
             {
-                DrinkName = "Sweet Latte"
+                DrinkName = "Sweet Latte",
+                Pantry = pantry
             };
 
             var flatWhite = new Drink
             {
-                DrinkName = "Flat White"
+                DrinkName = "Flat White",
+                Pantry = pantry
             };
 
             dbContext.Drinks.Add(doubleAmericano);
             dbContext.Drinks.Add(sweetLatte);
             dbContext.Drinks.Add(flatWhite);
-
-            #endregion
-
-            #region Pantry Drinks
-
-            var pantryDrinkDoubleAmericano = new PantryDrink
-            {
-                Pantry = pantry,
-                Drink = doubleAmericano
-            };
-
-            var pantryDrinkSweetLatte = new PantryDrink
-            {
-                Drink = sweetLatte,
-                Pantry = pantry
-            };
-
-            var pantryDrinkFlatWhite = new PantryDrink
-            {
-                Drink = flatWhite,
-                Pantry = pantry
-            };
-
-            dbContext.PantryDrinks.Add(pantryDrinkDoubleAmericano);
-            dbContext.PantryDrinks.Add(pantryDrinkSweetLatte);
-            dbContext.PantryDrinks.Add(pantryDrinkFlatWhite);
 
             #endregion
 

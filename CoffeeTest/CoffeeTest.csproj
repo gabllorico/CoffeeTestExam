@@ -331,11 +331,14 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Office\Index.cshtml" />
+    <Content Include="Views\Office\AddOffice.cshtml" />
+    <Content Include="Views\Office\OfficeEditor.cshtml" />
+    <Content Include="Views\Office\_OfficePantriesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Office\" />
-    <Folder Include="Views\Orders\" />
     <Folder Include="Views\Pantry\" />
   </ItemGroup>
   <ItemGroup>

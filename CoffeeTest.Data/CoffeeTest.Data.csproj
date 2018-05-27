@@ -68,22 +68,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\IngredientCommand.cs" />
+    <Compile Include="Commands\IngredientCommands.cs" />
+    <Compile Include="Commands\OfficeCommands.cs" />
     <Compile Include="DBContext\BaseDbContext.cs" />
     <Compile Include="DBContext\CoffeeTestDbContext.cs" />
     <Compile Include="DBContext\CoffeeTestInitializer.cs" />
-    <Compile Include="DTO\Read\ViewAllIngredientsDto.cs" />
-    <Compile Include="DTO\Read\ViewIngredientDto.cs" />
+    <Compile Include="DTO\AllDrinksDto.cs" />
+    <Compile Include="DTO\AllOfficesDto.cs" />
+    <Compile Include="DTO\DrinkDto.cs" />
+    <Compile Include="DTO\AllIngredientsDto.cs" />
+    <Compile Include="DTO\IngredientDto.cs" />
+    <Compile Include="DTO\OfficeDto.cs" />
+    <Compile Include="DTO\OfficePantriesDto.cs" />
+    <Compile Include="DTO\PantryDrinksDto.cs" />
+    <Compile Include="DTO\PantryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\DrinkQueries.cs" />
     <Compile Include="Queries\IngredientQueries.cs" />
+    <Compile Include="Queries\OfficeQueries.cs" />
+    <Compile Include="Queries\PantryQueries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\Write\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CoffeeTest.Domain\CoffeeTest.Domain.csproj">
       <Project>{53ec7f63-4ca3-4039-ab78-c7e4af1e57b6}</Project>

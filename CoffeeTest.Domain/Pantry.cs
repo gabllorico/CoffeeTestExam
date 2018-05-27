@@ -6,7 +6,7 @@ namespace CoffeeTest.Domain
     {
         public Office Office { get; set; }
         public string PantryName { get; set; }
-        public ICollection<PantryDrink> PantryDrinks { get; set; }
+        public ICollection<Drink> Drinks { get; set; } 
         
     }
 }

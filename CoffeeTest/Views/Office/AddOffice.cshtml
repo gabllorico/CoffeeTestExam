@@ -1,0 +1,21 @@
+﻿@model CoffeeTest.Data.DTO.OfficeDto
+@{
+    ViewBag.Title = "Add Office";
+}
+@using (Html.BeginForm())
+{
+    <section class="row">
+        <h2 class="col-md-2">Add Office</h2>
+        <button type="submit" class="btn btn-info pull-right">Save</button>
+    </section>
+    <hr/>
+    <section class="row">
+        @Html.LabelFor(dto => dto.OfficeName, "Office Name", new {@class = "col-md-2"})
+        @Html.TextBoxFor(dto => dto.OfficeName, new {@class = "form-control col-md-4"})
+    </section>
+    <section class="row">
+        @Html.LabelFor(dto => dto.Location, "Office Location", new {@class = "col-md-2"})
+        @Html.TextBoxFor(dto => dto.Location, new {@class = "form-control col-md-4"})
+    </section>
+}
+

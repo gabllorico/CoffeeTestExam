@@ -1,0 +1,27 @@
+﻿@model CoffeeTest.Data.DTO.OfficePantriesDto
+    <hr/>
+<div class="row">
+    @for (var i = 0; i < Model.PantriesAndDrinks.Count; i++)
+    {
+        <section class="panel panel-default col-md-4">
+
+
+            <span class="panel-heading">
+                <h4>
+                    @Model.PantriesAndDrinks[i].Pantry.PantryName
+                </h4>
+                <a href="#" class="pull-right btn btn-default">Go To @Model.PantriesAndDrinks[i].Pantry.PantryName</a>
+            </span>
+            <span class="panel-body">
+
+                @for (var y = 0; y < Model.PantriesAndDrinks[i].Drinks.Count; y++)
+                {
+                    <label class="col-md-12">
+                        @Model.PantriesAndDrinks[i].Drinks[y].DrinkName
+                    </label>
+                }
+            </span>
+
+        </section>
+    }
+</div>

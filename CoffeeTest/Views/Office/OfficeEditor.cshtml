@@ -1,0 +1,34 @@
+﻿@model CoffeeTest.Data.DTO.OfficeDto
+@{
+    ViewBag.Title = Model.OfficeId == 0 ? "Add Office" : "Edit " + Model.OfficeName;
+}
+
+
+@using (Html.BeginForm(Model.OfficeId == 0 ?"AddOffice" : "EditOffice", "Office", FormMethod.Post))
+{
+    <section class="row">
+        <h2 class="col-md-6">@ViewBag.Title</h2>
+        <section class="pull-right">
+            <button type="submit" class="btn btn-info">Save</button>
+            <a class="btn btn-default" href="@Url.Action("Index", "Office")">Cancel</a>
+        </section>
+    </section>
+    <hr/>
+    @Html.HiddenFor(dto => dto.OfficeId)
+    <section class="row">
+        @Html.LabelFor(dto => dto.OfficeName, "Office Name", new { @class = "col-md-2" })
+        @Html.TextBoxFor(dto => dto.OfficeName, new { @class = "form-control col-md-4" })
+    </section>
+    <section class="row">
+        @Html.LabelFor(dto => dto.Location, "Office Location", new {@class = "col-md-2"})
+        @Html.TextBoxFor(dto => dto.Location, new {@class = "form-control col-md-4"})
+    </section>
+
+    if (Model.OfficeId != 0)
+    {
+        @Html.Action("GetOfficePantries", "Office", new {officeId = Model.OfficeId})
+    }
+
+
+}
+

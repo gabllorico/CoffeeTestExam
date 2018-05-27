@@ -1,0 +1,28 @@
+﻿@model CoffeeTest.Data.DTO.AllOfficesDto
+@{
+    ViewBag.Title = "Index";
+}
+<section class="row">
+    <h2>Offices</h2>
+    <a href="@Url.Action("OfficeEditor", "Office")" class="btn btn-info pull-right">Add</a>
+</section>
+<section>
+    <label>Please Select Office</label>
+</section>
+
+<section>
+    <span class="row">
+@if (Model != null)
+{
+    for (var i = 0; i < Model.Offices.Count; i++)
+    {
+        @Html.HiddenFor(dto => dto.Offices[i].OfficeId)
+            <label class="col-lg-4">@Model.Offices[i].OfficeName</label>
+            <label class="col-lg-4">@Model.Offices[i].Location</label>
+            <a href="@Url.Action("OfficeEditor", "Office", new {id = Model.Offices[i].OfficeId})" class="btn btn-default">Go To Office</a>
+        }
+
+
+}
+        </span>
+</section>

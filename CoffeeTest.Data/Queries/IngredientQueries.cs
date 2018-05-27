@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CoffeeTest.Data.DBContext;
-using CoffeeTest.Data.DTO.Read;
-using ShortBus;
+using CoffeeTest.Data.DTO;
+
 
 namespace CoffeeTest.Data.Queries
 {
@@ -14,15 +14,15 @@ namespace CoffeeTest.Data.Queries
             _dbContext = new CoffeeTestDbContext();
         }
 
-        public ViewAllIngredientsDto GetAllIngredients()
+        public AllIngredientsDto GetAllIngredients()
         {
-            var ingredients = _dbContext.Ingredients.Select(c => new ViewIngredientDto
+            var ingredients = _dbContext.Ingredients.Select(c => new IngredientDto
             {
                 IngredientId = c.Id,
                 IngredientName = c.IngredientName
             }).ToList();
 
-            return new ViewAllIngredientsDto
+            return new AllIngredientsDto
             {
                 Ingredients = ingredients
             };
