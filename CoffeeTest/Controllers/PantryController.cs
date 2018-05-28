@@ -51,5 +51,17 @@ namespace CoffeeTest.Controllers
             }
 
         }
+
+        public JsonResult OrderDrinkFromSelectedPantry(int pantryId, int drinkId)
+        {
+            var success = new OrderCommands().OrderDrinks(drinkId, pantryId);
+            return Json(new { success }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddDrinksModal(int pantryId)
+        {
+            var model = new OfficeIngredientCommands().AddDrinkModal(pantryId);
+            return PartialView("_AddDrinksModal", model);
+        }
     }
 }

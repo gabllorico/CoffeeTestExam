@@ -35,47 +35,60 @@ namespace CoffeeTest.Data.Queries
 
         public PantryDrinksDto GetDrinksOfSelectedPantry(int pantryId)
         {
-            var pantryWithDrinks = _dbContext.Drinks.Include(x => x.Pantry).Include(x => x.DrinkIngredients).Where(x => x.Pantry.Id == pantryId).ToList();
+            var pantryWithDrinks =
+                _dbContext.PantryDrinks.Include(x => x.Pantry)
+                    .Include(x => x.Drink)
+                    .Include(x => x.Drink.DrinkIngredients)
+                    .Where(x => x.Pantry.Id == pantryId)
+                    .ToList();
 
-            var pantry = _dbContext.Pantries.Include(x => x.Drinks).FirstOrDefault(x => x.Id == pantryId);
-
-            if (pantry == null)
-                throw new Exception("Data not found");
+            
+            
 
             if (pantryWithDrinks == null)
                 throw new Exception("Data not found");
 
 
-            var pantryDrinks = new PantryDrinksDto();
+            var pantryDrinksDto = new PantryDrinksDto();
 
-            pantryDrinks.Drinks = new List<DrinkWithIngredientsDto>();
-
-            pantryDrinks.Pantry = new PantryDto
+            pantryDrinksDto.Drinks = new List<DrinkWithIngredientsDto>();
+            if (pantryWithDrinks.Count != 0)
             {
-                PantryId = pantryId,
-                PantryName = pantry.PantryName
-            };
+                pantryDrinksDto.Pantry = new PantryDto
+                {
+                    PantryId = pantryId,
+                    PantryName = pantryWithDrinks.Select(c => c.Pantry).First().PantryName
+                };
 
-            if (pantry.Drinks.Count == 0)
-            {
-                return pantryDrinks;
+                if (pantryWithDrinks.Select(c => c.Drink).ToList().Count == 0)
+                {
+                    return pantryDrinksDto;
+                }
+
+                pantryDrinksDto.Drinks = pantryWithDrinks.Select(c => new DrinkWithIngredientsDto
+                {
+                    DrinkName = c.Drink.DrinkName,
+                    DrinkId = c.Drink.Id,
+                    IngredientWithUnitsUsed =
+                        _dbContext.DrinkIngredients.Include(x => x.Ingredient)
+                            .Where(b => b.Drink.Id == c.Drink.Id).OrderBy(x => x.Ingredient.IngredientName)
+                            .Select(y => new IngredientWithUnitsUsedDto
+                            {
+                                IngredientUsed = y.Ingredient.IngredientName,
+                                UnitsUsed = y.UnitsUsed
+                            }).ToList()
+                }).ToList();
+                pantryDrinksDto.Drinks = pantryDrinksDto.Drinks.OrderBy(x => x.DrinkName).ToList();
             }
 
-            pantryDrinks.Drinks = pantry.Drinks.Select(c => new DrinkWithIngredientsDto
-            {
-                DrinkName = c.DrinkName,
-                DrinkId = c.Id,
-                IngredientWithUnitsUsed =
-                    _dbContext.DrinkIngredients.Include(x => x.Ingredient)
-                        .Where(b => b.Drink.Id == c.Id).OrderBy(x => x.Ingredient.IngredientName)
-                        .Select(y => new IngredientWithUnitsUsedDto
-                        {
-                            IngredientUsed = y.Ingredient.IngredientName,
-                            UnitsUsed = y.UnitsUsed
-                        }).ToList()
-            }).ToList();
-            pantryDrinks.Drinks = pantryDrinks.Drinks.OrderBy(x => x.DrinkName).ToList();
-            return pantryDrinks;
+            pantryDrinksDto.Pantry =
+                _dbContext.Pantries.Where(x => x.Id == pantryId).Select(c => new PantryDto
+                {
+                    PantryName = c.PantryName,
+                    PantryId = c.Id
+                }).First();
+
+            return pantryDrinksDto;
         }
     }
 }

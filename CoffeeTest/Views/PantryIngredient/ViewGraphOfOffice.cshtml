@@ -1,0 +1,25 @@
+﻿@model CoffeeTest.Data.DTO.AllIngredientsStocksLeftPerOfficeDto
+@{
+    ViewBag.Title = "View Graph Of " + Model.Office.OfficeName;
+}
+
+<h2>Stocks left in @Model.Office.OfficeName</h2>
+
+@*@{
+    var xValue = new List<string>();
+    var yValue = new List<string>();
+    Model.IngredientStockLeft.
+        ForEach(x =>
+        {
+            xValue.Add(x.IngredientName);
+            yValue.Add(x.TotalStocksLeft.ToString());
+        }
+        );
+    var mychart = new Chart(width: 600, height: 400).AddTitle("Stocks Left").AddSeries(name: "Stocks Left", xField: "Ingredients", xValue: xValue, yValues: yValue);
+}*@
+
+<p><img src="@Url.Action("ViewGraphOfOfficeStockPartial", "PantryIngredient", new {officeId = Model.Office.OfficeId})" alt="MyChart"/>
+</p>
+
+<p><img src="@Url.Action("ViewGraphOfOfficeUnitsPartial", "PantryIngredient", new {officeId = Model.Office.OfficeId})" alt="MyChart" /></p>
+

@@ -1,0 +1,36 @@
+﻿
+@model CoffeeTest.Data.DTO.AllIngredientsStocksLeftPerOfficeDto
+
+<h2>Stocks left in @Model.Office.OfficeName</h2>
+
+@foreach (var i in Model.IngredientStockLeft)
+{
+    <div class="row">
+        <label class="col-md-4">
+            @i.IngredientName
+        </label>
+        <label class="col-md-4">
+            @i.TotalStocksLeft
+        </label>
+        <label class="col-md-4">
+            @i.UnitStocksLeft
+        </label>
+    </div>
+}
+
+@{
+    var xValue = new List<string>();
+    var yValue = new List<string>();
+    Model.IngredientStockLeft.
+        ForEach(x =>
+        {
+            xValue.Add(x.IngredientName);
+            yValue.Add(x.UnitStocksLeft.ToString());
+        }
+        );
+    var mychart = new Chart(width: 600, height: 400).AddTitle("Units Left").AddSeries(name: "Units Left", xField: "Ingredients", xValue: xValue, yValues: yValue);
+}
+
+<div>
+    @mychart.Write();
+</div>

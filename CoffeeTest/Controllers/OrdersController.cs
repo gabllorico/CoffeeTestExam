@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
+using CoffeeTest.Data.Commands;
 using CoffeeTest.Data.Queries;
 
 namespace CoffeeTest.Controllers
@@ -10,9 +8,21 @@ namespace CoffeeTest.Controllers
     public class OrdersController : Controller
     {
         // GET: Orders
-        public ActionResult Index(int officeId, int pantryId)
+        public ActionResult Index()
         {
-            var model = new DrinkQueries().GetAllDrinks();
+            var model = new OrderQueries().GetAllOrders();
+            return View(model);
+        }
+
+        public JsonResult OrderDrink(int pantryId, int drinkId)
+        {
+            var success = new OrderCommands().OrderDrinks(drinkId, pantryId);
+            return Json(new {success}, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ViewRemainingPerOffice(int officeId)
+        {
+            var model = new OrderQueries().OrdersHistoryPerOffice();
             return View(model);
         }
     }

@@ -1,4 +1,4 @@
-﻿
+﻿@model CoffeeTest.Data.DTO.AllOrdersDto
 @{
     ViewBag.Title = "Index";
 }
@@ -6,3 +6,36 @@
 <h2>Orders</h2>
 
 
+<table>
+    <tr>
+        <th class="col-md-3">
+            Drink Name
+        </th>
+        <th class="col-md-3">
+            Office Name
+        </th>
+        <th class="col-md-3">
+            Pantry Name
+        </th>
+        <th class="col-md-3">
+            Order Date
+        </th>
+    </tr>
+    @foreach (var order in Model.Orders)
+    {
+        <tr>
+            <td class="col-md-3">
+                @order.Drink.DrinkName
+            </td>
+            <td class="col-md-3">
+                @order.Office.OfficeName
+            </td>
+            <td class="col-md-3">
+                @order.Pantry.PantryName
+            </td>
+            <td class="col-md-3">
+                @order.OrderDate
+            </td>
+        </tr>
+    }
+</table>

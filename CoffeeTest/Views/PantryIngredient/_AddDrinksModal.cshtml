@@ -1,0 +1,55 @@
+﻿@model CoffeeTest.Data.DTO.PantryDrinksWithoutIngredientsDto
+
+<div id="modalAddDrinks" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Drinks</h4>
+            </div>
+            <div class="modal-body">
+                @for (var i = 0; i < Model.Drinks.Count; i++)
+                {
+                    <section class="row">
+                        <label class="col-md-3">@Model.Drinks[i].DrinkName</label>
+                        <input type="checkbox" onchange="addDrink(@Model.Drinks[i].DrinkId) "/>
+                    </section>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnConfirmOrder" onclick="addDrinks()" data-dismiss="modal" class="btn btn-default">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var checkedIds = [];
+    function addDrink(id) {
+        var index = checkedIds.indexOf(id);
+        if (index > -1) {
+            checkedIds.splice(index, 1);
+        } else {
+            checkedIds.push(id);
+        }
+
+    }
+
+    function addDrinks() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddDrinks", "PantryIngredient")',
+            data: {
+                drinkIds: checkedIds,
+                pantryId: '@Model.Pantry.PantryId'
+            },
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+
+</script>

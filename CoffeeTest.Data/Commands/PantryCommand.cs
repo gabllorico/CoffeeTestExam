@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using CoffeeTest.Data.DBContext;
 using CoffeeTest.Data.DTO;
 using CoffeeTest.Domain;
@@ -35,5 +36,24 @@ namespace CoffeeTest.Data.Commands
             pantryDto.PantryId = pantry.Id;
             return pantryDto;
         }
+
+        public bool AddDrinkToPantry(List<int> drinkIds, int pantryId)
+        {
+            var pantry = _dbContext.Pantries.FirstOrDefault(x => x.Id == pantryId);
+            var drinks = _dbContext.Drinks.Where(x => drinkIds.Contains(x.Id)).ToList();
+
+            foreach (var drink in drinks)
+            {
+                _dbContext.PantryDrinks.Add(new PantryDrink
+                {
+                    Pantry = pantry,
+                    Drink = drink
+                });
+            }
+
+            _dbContext.SaveChanges();
+            return true;
+        }
+
     }
 }

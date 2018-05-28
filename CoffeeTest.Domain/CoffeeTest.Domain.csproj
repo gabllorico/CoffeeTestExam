@@ -57,8 +57,8 @@
     <Compile Include="Office.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Pantry.cs" />
+    <Compile Include="OfficeIngredient.cs" />
     <Compile Include="PantryDrink.cs" />
-    <Compile Include="PantryIngredient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,32 @@
+﻿@model CoffeeTest.Data.DTO.AllOfficeOrderHistoryDto
+@{
+    ViewBag.Title = "ViewHistoryAllOffice";
+}
+
+<h2>ViewHistoryAllOffice</h2>
+
+@{
+    var xValue = new List<string>();
+    var yValue = new List<string>();
+    var sumOfDrinks = 0;
+    foreach (var office in Model.Offices)
+    {
+        xValue.Add(office.OfficeName);
+        foreach (var drink in office.Drinks)
+        {
+            sumOfDrinks = sumOfDrinks + 1;
+        }
+
+        yValue.Add(sumOfDrinks.ToString());
+    }
+    var x = xValue.ToArray();
+    var y = yValue.ToArray();
+    var mychart = new Chart(width: 600, height: 400).AddTitle("Chart Title").AddSeries(name: "Per Office", xValue: x, yValues: y).Write();
+    var myChart = new Chart(width: 600, height: 400)
+        .AddTitle("Chart Title")
+        .AddSeries(
+            name: "Employee",
+            xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+            yValues: new[] { "2", "6", "4", "5", "3" })
+        .Write();
+}

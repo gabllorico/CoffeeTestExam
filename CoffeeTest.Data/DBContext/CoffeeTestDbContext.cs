@@ -22,8 +22,8 @@ namespace CoffeeTest.Data.DBContext
         public IDbSet<Office> Offices { get; set; }
         public IDbSet<Order> Orders { get; set; }
         public IDbSet<Pantry> Pantries { get; set; }
+        public IDbSet<OfficeIngredient> OfficeIngredients { get; set; }
         public IDbSet<PantryDrink> PantryDrinks { get; set; }
-        public IDbSet<PantryIngredient> PantryIngredients { get; set; }
 
     }
 
@@ -36,8 +36,8 @@ namespace CoffeeTest.Data.DBContext
         IDbSet<Office> Offices { get; set; }
         IDbSet<Order> Orders { get; set; }
         IDbSet<Pantry> Pantries { get; set; }
+        IDbSet<OfficeIngredient> OfficeIngredients { get; set; }
         IDbSet<PantryDrink> PantryDrinks { get; set; }
-        IDbSet<PantryIngredient> PantryIngredients { get; set; }
 
         int SaveChanges();
     }

@@ -102,6 +102,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -314,6 +316,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\orderdrink.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -339,10 +342,15 @@
     <Content Include="Views\Office\_OfficePantriesPartial.cshtml" />
     <Content Include="Views\Pantry\PantryEditor.cshtml" />
     <Content Include="Views\Pantry\_PantryDrinksPartial.cshtml" />
+    <Content Include="Views\PantryIngredient\_TotalUnitsLeftPartial.cshtml" />
+    <Content Include="Views\Orders\ViewHistoryAllOffice.cshtml" />
+    <Content Include="Views\PantryIngredient\_AddDrinksModal.cshtml" />
+    <Content Include="Views\PantryIngredient\ViewGraphOfOffice.cshtml" />
+    <Content Include="Views\PantryIngredient\_ViewGraphOfOfficeStockPartial.cshtml" />
+    <Content Include="Views\PantryIngredient\_ViewGraphOfOfficeUnitsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\PantryIngredient\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

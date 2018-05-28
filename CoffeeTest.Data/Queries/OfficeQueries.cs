@@ -64,7 +64,8 @@ namespace CoffeeTest.Data.Queries
             };
 
             var pantries =
-                _dbContext.Pantries.Include(x => x.Drinks)
+                _dbContext.Pantries.Include(x => x.PantryDrinks)
+                .Include(x => x.PantryDrinks.Select(c => c.Drink))
                     .Include(x => x.Office)
                     .Where(x => x.Office.Id == office.Id).ToList();
 
@@ -77,10 +78,10 @@ namespace CoffeeTest.Data.Queries
                         PantryId = pantry.Id,
                         PantryName = pantry.PantryName
                     },
-                    Drinks = pantry.Drinks.Select(c => new DrinkWithIngredientsDto
+                    Drinks = pantry.PantryDrinks.Select(c => new DrinkWithIngredientsDto
                     {
-                        DrinkName = c.DrinkName,
-                        DrinkId = c.Id
+                        DrinkName = c.Drink.DrinkName,
+                        DrinkId = c.Drink.Id
                     }).ToList()
                 });
             }

@@ -20,14 +20,37 @@
         @Html.LabelFor(dto => dto.PantryName, "Pantry Name", new { @class = "col-md-2" })
         @Html.TextBoxFor(dto => dto.PantryName, new { @class = "form-control col-md-4" })
     </section>
-
-    <section>
-    </section>
-
     if (Model.PantryId != 0)
     {
-        @Html.Action("GetPantryDrinks", "Pantry", new { id = Model.PantryId })
+        <section>
+            @Html.Action("GetStockIngredientForSelectedPantry", "PantryIngredient", new {id = Model.PantryId})
+        </section>
+
+
+        @Html.Action("GetPantryDrinks", "Pantry", new {id = Model.PantryId})
+
     }
 
 
 }
+<script>
+    var pantryGlobalId;
+    var drinkGlobalId;
+    function orderDrink(pantryId, drinkId, drinkName) {
+        var message = document.getElementById('modalMessage');
+        message.innerHTML = "Order " + drinkName + " ?";
+        $('#modalConfirmOrder').modal('show');
+        pantryGlobalId = pantryId;
+        drinkGlobalId = drinkId;
+    };
+
+    function confirmOrder() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("OrderDrinkFromSelectedPantry", "Pantry")' +"?pantryId=" + pantryGlobalId + "&drinkId=" + drinkGlobalId,
+            success: function () {
+                location.reload();
+            }
+        });
+    };
+</script>

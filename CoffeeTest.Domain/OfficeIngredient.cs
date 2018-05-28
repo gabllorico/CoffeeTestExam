@@ -1,11 +1,11 @@
 ﻿
 namespace CoffeeTest.Domain
 {
-    public class PantryIngredient : BaseEntity
+    public class OfficeIngredient : BaseEntity
     {
         public Ingredient Ingredient { get; set; }
-        public Pantry Pantry { get; set; }
+        public Office Office { get; set; }
         public int TotalUnitsLeft { get; set; }
-        public int StacksLeft { get; set; }
+        public double StacksLeft { get; set; }
     }
 }

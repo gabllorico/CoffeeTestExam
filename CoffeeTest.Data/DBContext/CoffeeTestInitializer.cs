@@ -79,19 +79,16 @@ namespace CoffeeTest.Data.DBContext
             var doubleAmericano = new Drink
             {
                 DrinkName = "Double Americano",
-                Pantry = pantry
             };
 
             var sweetLatte = new Drink
             {
                 DrinkName = "Sweet Latte",
-                Pantry = pantry
             };
 
             var flatWhite = new Drink
             {
                 DrinkName = "Flat White",
-                Pantry = pantry
             };
 
             dbContext.Drinks.Add(doubleAmericano);
@@ -102,33 +99,33 @@ namespace CoffeeTest.Data.DBContext
 
             #region Pantry Ingredients
 
-            var pantryIngredientMilk = new PantryIngredient
+            var pantryIngredientMilk = new OfficeIngredient
             {
                 Ingredient = milk,
-                Pantry = pantry,
+                Office = office,
                 TotalUnitsLeft = 45,
                 StacksLeft = 3
             };
 
-            var pantryIngredientSugar = new PantryIngredient
+            var pantryIngredientSugar = new OfficeIngredient
             {
                 Ingredient = sugar,
-                Pantry = pantry,
+                Office = office,
                 TotalUnitsLeft = 45,
                 StacksLeft = 3
             };
 
-            var pantryIngredientCoffeeBean = new PantryIngredient
+            var pantryIngredientCoffeeBean = new OfficeIngredient
             {
                 Ingredient = coffeeBean,
                 TotalUnitsLeft = 45,
-                Pantry = pantry,
+                Office = office,
                 StacksLeft = 3
             };
 
-            dbContext.PantryIngredients.Add(pantryIngredientCoffeeBean);
-            dbContext.PantryIngredients.Add(pantryIngredientSugar);
-            dbContext.PantryIngredients.Add(pantryIngredientMilk);
+            dbContext.OfficeIngredients.Add(pantryIngredientCoffeeBean);
+            dbContext.OfficeIngredients.Add(pantryIngredientSugar);
+            dbContext.OfficeIngredients.Add(pantryIngredientMilk);
 
             #endregion  
 
@@ -208,6 +205,30 @@ namespace CoffeeTest.Data.DBContext
             dbContext.DrinkIngredients.Add(flatWhiteCoffeeBeans);
             dbContext.DrinkIngredients.Add(flatWhiteSugar);
             dbContext.DrinkIngredients.Add(flatWhiteMilk);
+
+            #endregion
+
+            #region Pantry Drink
+
+            var pantryDoubleAmericano = new PantryDrink
+            {
+                Pantry = pantry,
+                Drink = doubleAmericano
+            };
+            var pantrySweetLatte = new PantryDrink
+            {
+                Pantry = pantry,
+                Drink = sweetLatte
+            };
+            var pantryFlatWhite = new PantryDrink
+            {
+                Pantry = pantry,
+                Drink = flatWhite
+            };
+
+            dbContext.PantryDrinks.Add(pantryDoubleAmericano);
+            dbContext.PantryDrinks.Add(pantrySweetLatte);
+            dbContext.PantryDrinks.Add(pantryFlatWhite);
 
             #endregion
 
