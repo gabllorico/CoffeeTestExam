@@ -1,0 +1,20 @@
+﻿
+@model CoffeeTest.Data.DTO.DrinksDistributionDto
+
+<h2>Drink Distribution</h2>
+@{
+    var xValue = new List<string>();
+    var yValue = new List<string>();
+    Model.DrinkTally.
+        ForEach(x =>
+        {
+            xValue.Add(x.DrinkName);
+            yValue.Add(x.DrinkCount.ToString());
+        }
+        );
+    var mychart = new Chart(width: 600, height: 400).AddTitle("Order Distribution").AddSeries(name: "Units Left", xField: "Ingredients", xValue: xValue, yValues: yValue, chartType: "Pie");
+}
+
+<div>
+    @mychart.Write();
+</div>

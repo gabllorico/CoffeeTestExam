@@ -348,6 +348,8 @@
     <Content Include="Views\PantryIngredient\ViewGraphOfOffice.cshtml" />
     <Content Include="Views\PantryIngredient\_ViewGraphOfOfficeStockPartial.cshtml" />
     <Content Include="Views\PantryIngredient\_ViewGraphOfOfficeUnitsPartial.cshtml" />
+    <Content Include="Views\Orders\_ViewOrderDistributionPartial.cshtml" />
+    <Content Include="Views\Orders\DrinkDistribution.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

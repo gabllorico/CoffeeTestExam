@@ -80,6 +80,7 @@
     <Compile Include="DTO\AllOfficeOrderHistoryDto.cs" />
     <Compile Include="DTO\AllOfficesDto.cs" />
     <Compile Include="DTO\AllOrdersDto.cs" />
+    <Compile Include="DTO\DrinkDistributionDto.cs" />
     <Compile Include="DTO\DrinkDto.cs" />
     <Compile Include="DTO\DrinkWithIngredientsDto.cs" />
     <Compile Include="DTO\AllIngredientsDto.cs" />

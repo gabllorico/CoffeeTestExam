@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,26 @@ namespace CoffeeTest.Data.Queries
             {
                 Drinks = drinks
             };
+        }
+
+        public DrinksDistributionDto GetAllCountOfDrinks()
+        {
+            var drinkDistributionDto = new DrinksDistributionDto();
+            drinkDistributionDto.DrinkTally = new List<DrinkWithTallyDto>();
+
+            var orders = _dbContext.Orders.Include(x => x.Drink).ToList();
+            var drinks = _dbContext.Drinks.ToList();
+
+            foreach (var drink in drinks)
+            {
+                drinkDistributionDto.DrinkTally.Add(new DrinkWithTallyDto
+                {
+                    DrinkName = drink.DrinkName,
+                    DrinkCount = orders.Count(x => x.Drink.Id == drink.Id)
+                });
+            }
+
+            return drinkDistributionDto;
         }
     }
 }

@@ -25,5 +25,16 @@ namespace CoffeeTest.Controllers
             var model = new OrderQueries().OrdersHistoryPerOffice();
             return View(model);
         }
+
+        public ActionResult ViewOrderDistribution()
+        {
+            var model = new DrinkQueries().GetAllCountOfDrinks();
+            return PartialView("_ViewOrderDistributionPartial", model);
+        }
+
+        public ActionResult DrinkDistribution()
+        {
+            return View();
+        }
     }
 }
